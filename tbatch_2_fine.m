@@ -29,28 +29,28 @@ source_margin=40; source_n=130; the_ratio = 1;
 
 
 %%
-binarize_ratio = 10;
+binarize_ratio = 10;   % binarization parameter `G`
 
 
 %%
 
-n_ri = 1.45; 
+n_ri = 1.45;  % refractive index
 
-intensity_attenuation = 0.6; 
+intensity_attenuation = 0.6;  % remaining energy after passing through 1cm of material
 
 
 proj_cnt = numel(source_list);
 
-sample_pixelsize = 5.4e-6 * the_ratio;
+sample_pixelsize = 5.4e-6 * the_ratio; %  default pixelsize is 5.4um
 
 %%
 
-interface_distance = 5.0e-3;   % 打印中心到前表面的距离 
-z_shift = +0.0e-3;     % 共轭面到打印中心的传播距离 
+interface_distance = 5.0e-3;   % distance from the font surface to the printing center
+z_shift = +0.0e-3;             % propagation distance from the printing center to the approximate conjugate plane
 
 
 %%
-flag_rotate45 = 0; % 1 -> Ignoring the 45 degree placement of the DMD in the projection matrix
+flag_rotate45 = 0; % 0->Considering the 45 degree placement of the DMD in the projection matrix
 
 flag_watch_iter = 0; 
 flag_watch_result = 1;
@@ -68,13 +68,11 @@ pf_num_workers = 1;
 
 flag_source_fft_error = 0;  
 
-% the_intensity_map
 flag_intensity_map = 1;
-
-the_intensity_map_filename = './data/beam_profile_247.png'; 
+the_intensity_map_filename = './data/beam_profile_247.png';  % beam profile
 
 %% main
-main2_n_gs_s;
+main2_holo;
 
 
 %%

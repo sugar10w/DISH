@@ -1,6 +1,6 @@
 % Coarse optimization without considering refraction and holography
 
-%% 清理工作空间 clean workspace
+%% clean workspace
 if exist('the_dir_savename', 'var') && exist('str_notes_suffix', 'var')
     source_list_init_filename = sprintf('%s/PMAr_source_%s.mat', the_dir_savename, str_notes_suffix );
     if exist(source_list_init_filename, "file")
@@ -41,11 +41,9 @@ end
 
 %%
 
-n_ri = 1.45;  
+n_ri = 1.45;    % refractive index
 
-intensity_attenuation =  0.6;  % 穿过1cm材料后剩余的能量比例  remaining energy after passing through 1cm of material
-
-
+intensity_attenuation =  0.6;  % remaining energy after passing through 1cm of material
 
 %%
 flag_iter_method = 'none';
@@ -57,23 +55,22 @@ flag_process = 1;
 if ~exist('the_ratio', 'var')
     the_ratio = 1;
 end
-sample_pixelsize = 5.4e-6 * the_ratio;  % 默认分辨率使用5.4um;  default resolution is 5.4um
+sample_pixelsize = 5.4e-6 * the_ratio;  %  default pixelsize is 5.4um
 
 
-flag_rotate45 = 0; %  1 -> Ignoring the 45 degree placement of the DMD in the projection matrix
+flag_rotate45 = 0; %  0->Considering the 45 degree placement of the DMD in the projection matrix
 
-flag_watch_iter = 0;    % 是否保存迭代过程 Whether to save the iterative process
-flag_watch_result = 1;  % 是否导出三维图 whether to export final 3D volume
+flag_watch_iter = 0;    
+flag_watch_result = 1;  
 
 pb_num_workers = 1;
 pf_num_workers = 1;
 
-% 处理 the_intensity_map
 flag_intensity_map = 1;
-the_intensity_map_filename = './data/beam_profile_247.png'; 
+the_intensity_map_filename = './data/beam_profile_247.png';  % beam profile
 
-%% main
 
+%% initialization
 main2_easy;
 
 if exist('the_image', 'var')
@@ -86,6 +83,7 @@ if exist('the_image', 'var')
     end
 end
 
+%% main
 if flag_process && jaccard_max_iter>0
     main_Adam_reinf;
     main_save;
@@ -93,7 +91,6 @@ end
 
 
 %%
-
 time_lapse = datetime - time_start; 
 fprintf('[Info] Total run time is %s\n', char(time_lapse));
 
