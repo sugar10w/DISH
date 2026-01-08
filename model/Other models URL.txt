@@ -1,0 +1,8 @@
+
+Crow	https://www.thingiverse.com/thing:182120
+Jet 	https://www.thingiverse.com/thing:3085856
+Squid	https://www.thingiverse.com/thing:4704303
+Dolphin	https://www.thingiverse.com/thing:1611256
+
+
+You can use the Slicer software (https://www.slicer.org/) to adjust the file to TIFF format.
